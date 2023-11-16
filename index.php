@@ -76,6 +76,13 @@ include('functions/common_function.php');
       </ul>
     </nav>
 
+    <!-- calling the cart function -->
+    <?php
+    cart();
+    ?>
+
+
+
     <!-- third child -->
     <div class="bg-light">
       <h3 class="text-center">Beemak Store</h3>
@@ -95,6 +102,9 @@ include('functions/common_function.php');
           getproducts();
           get_unique_categories();
           get_unique_brands();
+          // $ip = getIPAddress();
+          // echo 'User Real IP Address - ' . $ip;
+
 
           ?>
         </div>

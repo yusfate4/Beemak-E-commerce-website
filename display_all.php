@@ -92,7 +92,7 @@ include('functions/common_function.php');
 
                     <?php
                     // calling functions
-                    getproducts();
+                    get_all_products();
                     get_unique_categories();
                     get_unique_brands();
 
