@@ -34,7 +34,7 @@ include('functions/common_function.php');
             </li>
           </ul>
         </nav>
-        <form class="d-flex" action="search_product.php" method="get" >
+        <form class="d-flex" action="search_product.php" method="get">
           <input type="search" class="form-control me-2" name="search_data" placeholder="Search" aria-label="Search">
           <input type="submit" value="Search" class='btn btn-outline-light' name="search_data_product">
 
@@ -45,6 +45,27 @@ include('functions/common_function.php');
     <!-- second child -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <ul class="navbar-nav me-auto">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="display_all.php">products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="">Welcome Guest</a>
         </li>
@@ -115,9 +136,10 @@ include('functions/common_function.php');
     </div>
 
     <!-- last child -->
-    <div class="bg-info p-3 text-center footer">
-      <p>Beemak @ 2023</p>
-    </div>
+    <!-- Include footer -->
+    <?php
+    include('assets/includes/footer.php');
+    ?>
   </div>
 
   <!-- bootstrap js link -->
