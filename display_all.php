@@ -32,6 +32,30 @@ include('functions/common_function.php');
                         <li class="nav-item">
                             <a href="" class="nav-link">Welcome Guest</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">products</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Register</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Total Price: <?php total_cart_price(); ?></a>
+                        </li>
                     </ul>
                 </nav>
                 <form class="d-flex" action="search_product.php" method="get">
@@ -46,25 +70,7 @@ include('functions/common_function.php');
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="">products</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="">Welcome Guest</a>

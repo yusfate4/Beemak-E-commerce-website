@@ -29,6 +29,8 @@ function getproducts()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
      </div>
@@ -68,6 +70,8 @@ function get_all_products()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
      </div>
@@ -112,6 +116,8 @@ function get_unique_categories()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
      </div>
@@ -158,6 +164,8 @@ function get_unique_brands()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
      </div>
@@ -228,6 +236,8 @@ function search_product()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
      </div>
@@ -272,6 +282,8 @@ function view_details()
        <h5 class='card-title'>$product_title</h5>
        <p class='card-text'>
        $product_description </p>
+       <p class='card-text'> Price: 
+       $product_price </p>
        <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
        <a href='index.php' class='btn btn-secondary'>Go home</a>
      </div>
@@ -347,3 +359,81 @@ function cart()
     }
   }
 }
+
+// function to get cart items numbers
+function cart_item()
+{
+  if (isset($_GET['add_to_cart'])) {
+    global $con;
+    $get_ip_add = getIPAddress();
+    $select_query = "Select * from `cart_details` where ip_address =  '$get_ip_add' ";
+    $result_query = mysqli_query($con, $select_query);
+    $count_cart_items = mysqli_num_rows($result_query);
+  } else {
+    global $con;
+    $get_ip_add = getIPAddress();
+    $select_query = "Select * from `cart_details` where ip_address =  '$get_ip_add' ";
+    $result_query = mysqli_query($con, $select_query);
+    $count_cart_items = mysqli_num_rows($result_query);
+  }
+  echo $count_cart_items;
+}
+
+
+// Total Price function
+function total_cart_price()
+{
+  global $con;
+  $get_ip_add = getIPAddress();
+  $total_price = 0;
+  $cart_query = "Select * from `cart_details` where ip_address = '$get_ip_add'";
+  $result = mysqli_query($con, $cart_query);
+  while ($row = mysqli_fetch_array($result)) {
+    $product_id = $row['product_id'];
+    $select_products = "Select * from `products` where product_id = '$product_id'";
+    $result_products =  mysqli_query($con, $select_products);
+    while ($row_product_price = mysqli_fetch_array($result_products)) {
+      $product_price = array($row_product_price['product_price']);
+      $product_values = array_sum($product_price);
+      $total_price += $product_values;
+    }
+  }
+  echo $total_price;
+}
+
+
+// function total_cart_price()
+// {
+//   global $con;
+
+//   // Get the user's IP address
+//   $get_ip_add = getIPAddress();
+
+//   // Initialize total price
+//   $total_price = 0;
+
+//   // Query to retrieve cart details based on IP address
+//   $cart_query = "SELECT * FROM `card_details` WHERE ip_address = '$get_ip_add'";
+//   $result = mysqli_query($con, $cart_query);
+
+//   // Loop through each cart item
+//   while ($row = mysqli_fetch_array($result)) {
+//     $product_id = $row['product_id'];
+
+//     // Query to retrieve product details based on product ID
+//     $select_products = "SELECT * FROM `products` WHERE product_id = '$product_id'";
+//     $result_products = mysqli_query($con, $select_products);
+
+//     // Loop through each product
+//     while ($row_product_price = mysqli_fetch_array($result_products)) {
+//       // Get the product price
+//       $product_price = $row_product_price['product_price'];
+
+//       // Add the product price to the total
+//       $total_price += $product_price;
+//     }
+//   }
+
+//   // Output the total price
+//   echo $total_price;
+// }
