@@ -110,7 +110,7 @@ include('functions/common_function.php');
                         global $con;
                         $get_ip_add = getIPAddress();
                         $total_price = 0;
-                        $cart_query = "Select * from `card_details` where ip_address = '$get_ip_add'";
+                        $cart_query = "Select * from `cart_details` where ip_address = '$get_ip_add'";
                         $result = mysqli_query($con, $cart_query);
                         while ($row = mysqli_fetch_array($result)) {
                             $product_id = $row['product_id'];
@@ -123,18 +123,12 @@ include('functions/common_function.php');
                                 $product_image1 = $row_product_price['product_image1'];
                                 $product_values = array_sum($product_price);
                                 $total_price += $product_values;
-
                         ?>
-
-
-
-
-
                                 <tr>
                                     <td> <?php echo $product_title ?></td>
-                                    <td><img style="width:80px; height:80px; object-fit: contain;" class="cart_img" src="assets/img/<?php echo $product_image1 ?>"></td>
+                                    <td><img style="width:80px; height:80px; object-fit: contain;" class="cart_img" src="assets/admin/product_images/<?php echo $product_image1 ?>"></td>
                                     <td><input type="text" name="" class="form-input w-50"> </td>
-                                    <td><?php echo $price_table ?></td>
+                                    <td> $<?php echo $price_table ?></td>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td>
                                         <button class="bg-info mx-3 px-3 py-2 border-0">
@@ -144,17 +138,14 @@ include('functions/common_function.php');
 
                                     </td>
                                 </tr>
-
-                        <?php
-                            }
-                        }
-                        ?>
+                        <?php }
+                        } ?>
                     </tbody>
                 </table>
                 <!-- subtotal -->
                 <div class="d-flex mb-5">
                     <h4 class="px-3">
-                        Subtotal: <strong class="text-info"><?php echo $total_price ?></strong>
+                        Subtotal: <strong class="text-info">$<?php echo $total_price ?></strong>
                     </h4>
                     <a href="index.php"><button class="bg-info mx-3 px-3 py-2 border-0">Continue Shopping</button></a>
                     <a href="#"><button class="bg-secondary p-3 py-2 border-0 text-light">Checkout</button></a>
