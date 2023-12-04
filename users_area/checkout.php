@@ -1,7 +1,6 @@
 <!-- connect to file -->
 <?php
-include('assets/includes/connect.php');
-include('functions/common_function.php');
+include('../assets/includes/connect.php');
 
 
 ?>
@@ -29,16 +28,13 @@ include('functions/common_function.php');
                 <img class="logo" src="/assets/img/beemak_logo.png" alt="" />
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Welcome Guest</a>
-                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">products</a>
+                            <a class="nav-link" href="display_all.php">products</a>
                         </li>
 
                         <li class="nav-item">
@@ -49,13 +45,9 @@ include('functions/common_function.php');
                             <a class="nav-link" href="#">Contact</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
-                        </li>
+                        -->
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Total price: $<?php total_cart_price(); ?> </a>
-                        </li>
+
 
                     </ul>
                 </nav>
@@ -78,10 +70,13 @@ include('functions/common_function.php');
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="./users_area/user_login.php">Login</a>
+                    <a class="nav-link" href="">Login</a>
                 </li>
             </ul>
         </nav>
+
+
+
 
         <!-- third child -->
         <div class="bg-light">
@@ -91,60 +86,27 @@ include('functions/common_function.php');
 
         <!-- fourth child -->
         <div class="row px-1">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <!-- products -->
                 <div class="row">
+                    <?php 
+                    if(!isset($_SESSION['username'])){
+                        include('user_login.php');
+                    } else {
+                        include('payment.php');
 
-                    <!-- Inserting the data from the database -->
-
-                    <?php
-                    // calling functions
-                    get_all_products();
-                    get_unique_categories();
-                    get_unique_brands();
+                    }
 
                     ?>
                 </div>
             </div>
-            <div class="col md-2 bg-secondary p-0">
-                <!-- sidebar -->
-                <!-- brands  to be displayed-->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item bg-info text-center">
-                        <a href="#" class="nav-link text-light">
-                            <h4>Delivery Brands</h4>
-                        </a>
-                    </li>
 
-                    <!-- Fetch data from database for brands -->
-                    <?php
-                    getbrands();
-                    ?>
-
-
-                </ul>
-
-                <!-- categories to be displayed -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item bg-info text-center">
-                        <a href="#" class="nav-link text-light">
-                            <h4>Categories</h4>
-                        </a>
-                    </li>
-
-
-                    <!-- Fetch data from database for categories -->
-                    <?php
-                    getcategories();
-                    ?>
-
-                </ul>
-            </div>
         </div>
 
         <!-- last child -->
+        <!-- Include footer -->
         <?php
-        include('assets/includes/footer.php');
+        include('../assets/includes/footer.php');
         ?>
     </div>
 
