@@ -2,6 +2,7 @@
 <?php
 include('assets/includes/connect.php');
 include('functions/common_function.php');
+session_start();
 
 
 ?>
@@ -42,7 +43,7 @@ include('functions/common_function.php');
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link" href="./users_area/user_registration.php">Register</a>
             </li>
 
             <li class="nav-item">
@@ -50,7 +51,7 @@ include('functions/common_function.php');
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
+              <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
             </li>
 
             <li class="nav-item">
@@ -71,16 +72,29 @@ include('functions/common_function.php');
     <!-- second child -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <ul class="navbar-nav me-auto">
+        <?php
+          if (!isset($_SESSION['username'])) {
+            echo " <li class='nav-item'>
+              <a class='nav-link' href='#'>Welcome Guest</a>
+            </li>";
+          } else {
+            echo "<li class='nav-item'>
+            <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
+          </li>";
+          }
 
+          
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
+                    <a class='nav-link' href='./users_area/user_login.php'>Login</a>
+                </li>";
+        } else {
+          echo "<li class='nav-item'>
+                    <a class='nav-link' href='./users_area/logout.php'>Logout</a>
+                </li>";
+        }
 
-        <li class="nav-item">
-          <a class="nav-link" href="">Welcome Guest</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="./users_area/user_login.php">Login</a>
-        </li>
+        ?>
       </ul>
     </nav>
 

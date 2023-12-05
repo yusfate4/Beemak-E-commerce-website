@@ -2,6 +2,7 @@
 <?php
 include('../assets/includes/connect.php');
 include('../functions/common_function.php');
+@session_start();
 
 ?>
 

@@ -1,6 +1,7 @@
 <!-- connect to file -->
 <?php
 include('../assets/includes/connect.php');
+session_start();
 
 
 ?>
@@ -38,17 +39,12 @@ include('../assets/includes/connect.php');
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register</a>
+                            <a class="nav-link" href="user_registration.php">Register</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
-
-                        -->
-
-
-
                     </ul>
                 </nav>
                 <form class="d-flex" action="search_product.php" method="get">
@@ -62,16 +58,34 @@ include('../assets/includes/connect.php');
         <!-- second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
+                <?php
+
+                if (!isset($_SESSION['username'])) {
+                    echo " <li class='nav-item'>
+      <a class='nav-link' href='#'>Welcome Guest</a>
+    </li>";
+                } else {
+                    echo "<li class='nav-item'>
+    <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
+  </li>";
+                }
 
 
+                if (!isset($_SESSION['username'])) {
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='./user_login.php'>Login</a>
+                </li>";
+                } else {
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='logout.php'>Logout</a>
+                </li>";
+                }
 
-                <li class="nav-item">
-                    <a class="nav-link" href="">Welcome Guest</a>
-                </li>
+                ?>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="">Login</a>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
@@ -89,12 +103,11 @@ include('../assets/includes/connect.php');
             <div class="col-md-12">
                 <!-- products -->
                 <div class="row">
-                    <?php 
-                    if(!isset($_SESSION['username'])){
+                    <?php
+                    if (!isset($_SESSION['username'])) {
                         include('user_login.php');
                     } else {
                         include('payment.php');
-
                     }
 
                     ?>
