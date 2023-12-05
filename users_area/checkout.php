@@ -30,11 +30,11 @@ include('../assets/includes/connect.php');
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="display_all.php">products</a>
+                            <a class="nav-link" href="../display_all.php">products</a>
                         </li>
 
                         <li class="nav-item">
