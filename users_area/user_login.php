@@ -1,3 +1,10 @@
+<!-- connect to file -->
+<?php
+include('../assets/includes/connect.php');
+include('../functions/common_function.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +17,11 @@
     <script src="https://kit.fontawesome.com/15df32d772.js" crossorigin="anonymous"></script>
 
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+</style>
 
 <body>
     <div class="container-fluid my-3">
@@ -45,3 +57,45 @@
 </body>
 
 </html>
+
+
+<?php
+if (isset($_POST["user_login"])) {
+    $user_username = $_POST['user_username'];
+    $user_password = $_POST['user_password'];
+
+    $select_query = "Select * from `user_table` where username = '$user_username'";
+    $result = mysqli_query($con, $select_query);
+    $rows_count = mysqli_num_rows($result);
+    $row_data = mysqli_fetch_assoc($result);
+    $user_ip = getIPAddress();
+
+
+    // cart items
+    $select_query_cart = "Select * from `cart_details` where ip_address  = '$user_ip'";
+
+    $select_cart = mysqli_query($con, $select_query_cart);
+    $rows_count_cart = mysqli_num_rows($select_cart);
+    if ($rows_count > 0) {
+        $_SESSION['username'] = $user_username;
+        if (password_verify($user_password, $row_data['user_password'])) {
+            if ($row_count == 1 and $row_count_cart) {
+                $_SESSION['username'] = $user_username;
+                echo "<script>alert('Login Successful')</script>";
+                echo "<script>window.open('profile.php', '_self')</script>";
+            } else {
+                $_SESSION['username'] = $user_username;
+                echo "<script>alert('Login Successful')</script>";
+                echo "<script>window.open('payment.php', '_self')</script>";
+            }
+            // echo "<script>alert('Login Successful')</script>";
+        } else {
+            echo "<script>alert('Invalid Credentials')</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid Credentials')</script>";
+    }
+}
+
+
+?>
