@@ -102,7 +102,9 @@ if (isset($_POST['user_register'])) {
         echo "<script>alert('Password do not match!')</script>";
     } else {
         // insert query
-        move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+        // move_uploaded_file($temp_image1, './product_images/'.$product_image1);
+
+        move_uploaded_file($user_image_tmp, './user_images/'.$user_image);
         $insert_query = "insert into `user_table` (username, user_email, user_password, 
         user_image,  user_ip, user_address, user_mobile) values ('$user_username', '$user_email', 
         '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_contact')";
