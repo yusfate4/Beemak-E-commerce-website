@@ -1,5 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .btn-secondary {
+    border: 3px solid red;
+  }
+</style>
+
+<body>
+
+</body>
+
+</html>
 <?php
 // include("./includes/connect.php");
+
+
 
 // getting products
 function getproducts()
@@ -10,7 +31,7 @@ function getproducts()
   if (!isset($_GET["category"])) {
     if (!isset($_GET["brand"])) {
       // Fetching Products
-      $select_query  = "Select * from `products` order by rand() LIMIT 0,4";
+      $select_query  = "Select * from `products` order by rand() LIMIT 0,6";
       $result_query = mysqli_query($con, $select_query);
       while ($row = mysqli_fetch_assoc($result_query)) {
         $product_id = $row["product_id"];
@@ -31,8 +52,8 @@ function getproducts()
        $product_description </p>
        <p class='card-text'> Price: 
        $product_price </p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>  Add to Cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-success'>View more</a>
      </div>
    </div>
  </div>
@@ -72,8 +93,8 @@ function get_all_products()
        $product_description </p>
        <p class='card-text'> Price: 
        $product_price </p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-success'>View more</a>
      </div>
    </div>
  </div>
@@ -118,8 +139,8 @@ function get_unique_categories()
        $product_description </p>
        <p class='card-text'> Price: 
        $product_price </p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-success'>View more</a>
      </div>
    </div>
  </div>
@@ -166,8 +187,8 @@ function get_unique_brands()
        $product_description </p>
        <p class='card-text'> Price: 
        $product_price </p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-success'>View more</a>
      </div>
    </div>
  </div>
@@ -186,7 +207,7 @@ function getbrands()
     $brand_title = $row_data['brand_title'];
     $brand_id = $row_data['brand_id'];
     echo " <li class='nav-item text-center'>
-      <a href='index.php?brand=$brand_id' class='nav-link text-light'>$brand_title </a>
+      <a href='display_all.php?brand=$brand_id' class='nav-link text-light'>$brand_title </a>
     </li>";
   }
 }
@@ -202,7 +223,7 @@ function getcategories()
     $category_title = $row_data['category_title'];
     $category_id = $row_data['category_id'];
     echo " <li class='nav-item text-center'>
-      <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title </a>
+      <a href='display_all.php?category=$category_id' class='nav-link text-light'>$category_title </a>
     </li>";
   }
 }
@@ -238,8 +259,8 @@ function search_product()
        $product_description </p>
        <p class='card-text'> Price: 
        $product_price </p>
-       <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-       <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+       <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Cart</a>
+       <a href='product_details.php?product_id=$product_id' class='btn btn-success'>View more</a>
      </div>
    </div>
  </div>

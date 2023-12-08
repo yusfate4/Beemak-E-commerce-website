@@ -59,7 +59,7 @@ if (isset($_POST['user_update'])) {
         <div class="form-outline mb-4">
             <input type="number" name="user_mobile" value="<?php echo $user_mobile ?>" class="form-control w-50 m-auto">
         </div>
-        <input type="submit" value="Update" name="user_update" class="bg-info py-2 px-3 border-0">
+        <input type="submit" value="Update" name="user_update" class="delivery-ng py-2 px-3 border-0">
 
     </form>
 

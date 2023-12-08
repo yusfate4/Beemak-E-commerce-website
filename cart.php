@@ -19,19 +19,84 @@ session_start();
     <script src="https://kit.fontawesome.com/15df32d772.js" crossorigin="anonymous"></script>
 
 </head>
+<style>
+    :root {
+        /* --primary: #636afa; */
+        /* --primary: #4caf50; */
+        --primary: #041e42;
+        --secondary: #ffffff;
+        /* --brown: #795548; */
+        --brown: #02b388;
+        --gray: #757575;
+        --aqua: #4dd0e1;
+        --red: #ff5722;
+    }
+
+    .delivery-bg,
+    .category-bg {
+        background-color: var(--primary);
+
+    }
+
+    .navbar {
+        background-color: var(--primary);
+    }
+
+    .nav-link {
+        color: var(--secondary);
+        /* margin-left: 10px; */
+
+    }
+
+    .navbar li a:hover,
+    .navbar li a.active {
+        background-color: var(--brown);
+        border-radius: 5px;
+    }
+
+    .search-btn {
+        /* border: 3px solid red; */
+        padding: 10px 25px;
+
+    }
+
+    .search-btn:hover {
+        background-color: var(--brown);
+        border: none;
+        color: var(--secondary);
+    }
+
+    .navbar-dark {
+        background-color: var(--brown);
+    }
+
+    .navbar-dark li a:hover {
+        background-color: var(--primary);
+    }
+
+
+    .section-p1 {
+        padding: 40px 80px;
+    }
+
+    .section-m1 {
+        margin: 40px 0;
+    }
+</style>
 
 <body>
     <!-- Navbar -->
     <div class="container-fluid p-0">
         <!-- First child  -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
-                <img class="logo" src="/assets/img/beemak_logo.png" alt="" />
+        <img style="width: 10%" src="assets/img/beemak_logo.png" alt="Beemak Logo" />
+
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
@@ -43,7 +108,7 @@ session_start();
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
 
                         <li class="nav-item">
@@ -56,21 +121,21 @@ session_start();
         </nav>
 
         <!-- second child -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <ul class="navbar-nav me-auto">
 
                 <?php
-                  if (!isset($_SESSION['username'])) {
+                if (!isset($_SESSION['username'])) {
                     echo " <li class='nav-item'>
                       <a class='nav-link' href='#'>Welcome Guest</a>
                     </li>";
-                  } else {
+                } else {
                     echo "<li class='nav-item'>
                     <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
                   </li>";
-                  }
+                }
 
-                  
+
                 if (!isset($_SESSION['username'])) {
                     echo "<li class='nav-item'>
                     <a class='nav-link' href='./users_area/user_login.php'>Login</a>
@@ -157,8 +222,8 @@ session_start();
                                         <td> $<?php echo $price_table ?></td>
                                         <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id ?>"></td>
                                         <td>
-                                            <input type="submit" value="Update Cart" class="bg-info mx-3 px-3 py-2 border-0" name="update_cart">
-                                            <input type="submit" value="Remove Cart" class="bg-info mx-3 px-3 py-2 border-0" name="remove_cart">
+                                            <input type="submit" value="Update Cart" class="delivery-bg text-light mx-3 px-3 py-1 border-0" name="update_cart">
+                                            <input type="submit" value="Remove Cart" class="delivery-bg text-light mx-3 px-3 py-1 border-0" name="remove_cart">
                                             <!-- <button class="bg-info mx-3 px-3 py-2 border-0">Remove</button> -->
 
                                         </td>
@@ -184,11 +249,11 @@ session_start();
                      <h4 class='px-3'>
                             Subtotal: <strong class='text-info'>$ $total_price </strong>
                         </h4>
-                        <input type='submit' value='Continue Shopping' class='bg-info mx-3 px-3 py-2 border-0' name='continue_shopping'>
+                        <input type='submit' value='Continue Shopping' class='delivery-bg text-light mx-3 px-3 py-2 border-0' name='continue_shopping'>
 
                         <button class='bg-secondary p-3 py-2 border-0 text-light'><a href='./users_area/checkout.php' class='text-light text-decoration-none'>Checkout</a></button>";
                         } else {
-                            echo " <input type='submit' value='Continue Shopping' class='bg-info mx-3 px-3 py-2 border-0' name='continue_shopping'> ";
+                            echo " <input type='submit' value='Continue Shopping' class='delivery-bg text-light mx-3 px-3 py-2 border-0' name='continue_shopping'> ";
                         }
 
                         if (isset($_POST['continue_shopping'])) {

@@ -25,8 +25,9 @@ if (isset($_POST['confirm_payment'])) {
     }
 
     $update_orders = "update `user_orders` set order_status = 'Complete' where order_id = $order_id";
-    $result_orders = mysqli_query($con,$update_orders);
-} ?>
+    $result_orders = mysqli_query($con, $update_orders);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,24 +48,27 @@ if (isset($_POST['confirm_payment'])) {
         <h1 class="text-center text-light">
             Confirm Payment
         </h1>
-        <form action="" method='post'>
+        <form action="" method="post">
 
             <div class="form-outline my-4 text-center w-50 m-auto">
-                <input type="text" class='form-control w-50 m-auto' name='invoice_number' value="<?php echo $invoice_number ?>">
+                <input type="text" class="form-control w-50 m-auto" name="invoice_number" value="<?php echo $invoice_number ?>">
             </div>
 
             <div class="form-outline my-4 text-center w-50 m-auto">
-                <label class='text-light' for="">Amount</label>
-                <input type="text" class='form-control w-50 m-auto' name='amount' value="<?php echo $amount_due ?>>
+                <label class="text-light">Amount</label>
+                <input type="text" class="form-control w-50 m-auto" name="amount" value="<?php echo $amount_due ?>">
             </div>
-            <div class=" form-outline my-4 text-center w-50 m-auto">
-                <select name="payment_mode" class='form-select w-50 m-auto'>
+
+            <div class="form-outline my-4 text-center w-50 m-auto">
+                <select name="payment_mode" class="form-select w-50 m-auto">
+                    <option>Select Payment Method</option>
                     <option>Paypal</option>
                     <option>Paystack</option>
                     <option>Cash on Delivery</option>
                     <option>Pay Offline</option>
                 </select>
             </div>
+
             <div class="form-outline my-4 text-center w-50 m-auto">
                 <input type="Submit" value="Confirm" name="confirm_payment" class='bg-info py-2 px-3 border-0'>
             </div>
