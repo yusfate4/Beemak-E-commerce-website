@@ -39,6 +39,29 @@ if (isset($_POST['user_update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Account</title>
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    :root {
+        /* --primary: #636afa; */
+        /* --primary: #4caf50; */
+        --primary: #041e42;
+        --secondary: #ffffff;
+        /* --brown: #795548; */
+        --brown: #02b388;
+        --gray: #757575;
+        --aqua: #4dd0e1;
+        --red: #ff5722;
+    }
+
+    .delivery-bg,
+    .category-bg {
+        background-color: var(--primary);
+
+    }
+</style>
 
 <body>
     <h3 class="text-center text-success mb-4">Edit Account</h3>
@@ -59,7 +82,7 @@ if (isset($_POST['user_update'])) {
         <div class="form-outline mb-4">
             <input type="number" name="user_mobile" value="<?php echo $user_mobile ?>" class="form-control w-50 m-auto">
         </div>
-        <input type="submit" value="Update" name="user_update" class="delivery-ng py-2 px-3 border-0">
+        <input type="submit" value="Update" name="user_update" class="delivery-bg text-light py-2 px-3 border-0">
 
     </form>
 
